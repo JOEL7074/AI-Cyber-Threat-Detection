@@ -1,198 +1,231 @@
 
-# 🛡️ Sentinel AI — AI Cyber Threat Detection & Response System
+# 🛡️ Sentinel AI
+## AI-Powered Cyber Threat Detection & Response System
 
-An AI-powered cybersecurity application built with **Python, Machine Learning, and Streamlit** to analyze network traffic and identify potential cyber threats, with a focus on **DDoS attack detection**.
+Sentinel AI is a machine learning-based cybersecurity application designed to detect suspicious network activity and identify potential cyber threats using network traffic data.
 
----
+The system uses a **Random Forest machine learning algorithm** to classify network traffic as either **BENIGN** or **DDoS**.
 
-## 📌 Project Overview
-
-**Sentinel AI** is a machine-learning-based Cyber Threat Detection and Response System designed to analyze network traffic data and classify network activity as either:
-
-- ✅ **BENIGN** — Normal network traffic
-- 🚨 **DDoS** — Potential Distributed Denial-of-Service traffic
-
-The system uses a **Random Forest Machine Learning model** trained on network-flow data from the **CICIDS2017 dataset**.
-
-A Streamlit dashboard provides an interactive interface for uploading network traffic data, detecting threats, analyzing network activity, and generating security reports.
+It provides an interactive cybersecurity dashboard built using **Python and Streamlit**.
 
 ---
 
-## 🎯 Project Objective
+# 📌 Project Overview
 
-The main objective of Sentinel AI is to demonstrate how Machine Learning can assist cybersecurity teams in:
+Cyberattacks are becoming increasingly common, and identifying malicious network traffic is an important part of cybersecurity.
 
-1. Analyzing network traffic
-2. Detecting suspicious traffic patterns
-3. Classifying potential threats
-4. Understanding important network features
-5. Visualizing network activity
-6. Generating security reports
-7. Simulating defensive threat-response actions
+Traditional network monitoring systems often require manual analysis of large amounts of network traffic.
 
----
+Sentinel AI uses machine learning to analyze network traffic and identify potentially harmful activity.
 
-## 🚨 Problem Statement
+The system provides a simple dashboard where users can:
 
-Traditional cybersecurity systems often depend heavily on predefined rules and signatures.
+- Analyze network traffic
+- Detect potential DDoS attacks
+- View network statistics
+- Analyze individual network flows
+- View machine learning predictions
+- Generate security reports
+- Understand important network features
 
-However, modern network environments generate huge amounts of traffic, making manual analysis difficult.
-
-Sentinel AI demonstrates a machine-learning approach where network traffic features are analyzed automatically and classified into different traffic categories.
+> **Note:** This project is an educational prototype designed for defensive cybersecurity research and learning.
 
 ---
 
-## 💡 Proposed Solution
+# 🎯 Project Objectives
 
-Sentinel AI follows this workflow:
+The main objectives of Sentinel AI are:
 
-```text
-Network Traffic Dataset
-        ↓
-Data Preprocessing
-        ↓
-Feature Processing
-        ↓
-Random Forest Model
-        ↓
-Threat Prediction
-        ↓
-Security Dashboard
-        ↓
-Threat Analysis
-        ↓
-Simulated Response
-        ↓
-Security Report
-```
+1. Detect suspicious network traffic using machine learning.
+2. Classify traffic as BENIGN or DDoS.
+3. Reduce the need for manual traffic analysis.
+4. Provide an interactive cybersecurity dashboard.
+5. Display network traffic statistics and visualizations.
+6. Generate downloadable security reports.
+7. Demonstrate the application of AI in cybersecurity.
 
 ---
 
-# 🧠 Machine Learning Model
+# 🚨 Problem Statement
+
+Modern networks generate large amounts of traffic every second.
+
+Analyzing this traffic manually can be time-consuming and difficult.
+
+Cybersecurity professionals need tools that can help them identify suspicious traffic quickly.
+
+This project aims to develop a machine learning-based system that can analyze network traffic and classify it into different categories.
+
+---
+
+# 💡 Proposed Solution
+
+Sentinel AI uses the following workflow:
+
+1. Load network traffic data from a CSV file.
+2. Clean and preprocess the dataset.
+3. Separate the input features and target labels.
+4. Train a Random Forest classification model.
+5. Test the trained model.
+6. Save the trained model.
+7. Load the model into a Streamlit application.
+8. Predict whether network traffic is BENIGN or DDoS.
+9. Display the results through a cybersecurity dashboard.
+
+---
+
+# 🧠 Machine Learning Algorithm
 
 ## Random Forest Classifier
 
-The project uses a **Random Forest Classifier**.
+Sentinel AI uses the **Random Forest Classifier**.
 
-Random Forest is an ensemble machine-learning algorithm that combines multiple decision trees to make predictions.
+Random Forest is a machine learning algorithm that combines multiple decision trees to make a prediction.
 
-Instead of depending on a single decision tree, Random Forest combines the results of multiple trees.
+Each decision tree makes a prediction, and the Random Forest combines the results to produce the final prediction.
 
-### Simple Explanation
+### Why Random Forest?
 
-Imagine asking 100 security experts:
-
-> "Is this network traffic normal or dangerous?"
-
-Each expert gives an opinion. Random Forest combines their opinions to produce a final prediction.
+- Suitable for classification problems
+- Works well with tabular datasets
+- Can handle many input features
+- Provides feature importance values
+- Easy to integrate with Python applications
+- Useful for educational intrusion detection prototypes
 
 ---
 
 # 📊 Dataset
 
-The project uses network-flow data from the **CICIDS2017 cybersecurity dataset**.
+This project uses network traffic data from the **CICIDS2017 dataset**.
 
-The current project uses:
+The dataset contains network flow information collected for cybersecurity research.
 
-```text
-Friday-WorkingHours-Afternoon-DDos.pcap_ISCX.csv
-```
-
-### Dataset Information
+### Dataset Details
 
 | Property | Value |
-|---|---:|
+|---|---|
+| Dataset | CICIDS2017 |
+| Dataset File | Friday-WorkingHours-Afternoon-DDos.pcap_ISCX.csv |
 | Total Rows | 225,745 |
 | Total Columns | 79 |
 | Input Features | 78 |
 | Target Column | Label |
+| Classes Used | BENIGN, DDoS |
 | Training Split | 80% |
 | Testing Split | 20% |
 
-### Classes
+### Target Classes
 
-| Class | Description |
-|---|---|
-| BENIGN | Normal network traffic |
-| DDoS | Distributed Denial-of-Service traffic |
-
-### Class Distribution
-
-```text
-DDoS     → 128,027
-BENIGN   → 97,718
-```
+- **BENIGN:** Normal network traffic.
+- **DDoS:** Network traffic associated with Distributed Denial-of-Service activity in the dataset.
 
 ---
 
-# 🔧 Data Preprocessing
+# 🧹 Data Preprocessing
 
-The following preprocessing steps are performed:
+The following preprocessing steps were performed:
 
-1. Load the CSV dataset
-2. Remove whitespace from column names
-3. Separate features and labels
-4. Handle infinite values
-5. Replace missing values
-6. Split the data into training and testing sets
-7. Train the Random Forest model
+1. Loaded the dataset using pandas.
+2. Removed unnecessary spaces from column names.
+3. Separated the input features from the target column.
+4. Replaced infinite values with missing values.
+5. Replaced missing values with zero.
+6. Divided the dataset into training and testing data.
+7. Used stratified sampling to preserve class distribution.
 
-Example preprocessing code:
+### Preprocessing Code
 
 ```python
+X = data.drop("Label", axis=1)
+y = data["Label"]
+
 X = X.replace([float("inf"), float("-inf")], float("nan"))
 X = X.fillna(0)
 ```
 
 ---
 
-# 🏋️ Model Training
+# 🤖 Model Training
 
-The Random Forest model uses the following configuration:
+The Random Forest model was trained using the following configuration:
 
 ```python
-RandomForestClassifier(
+model = RandomForestClassifier(
     n_estimators=100,
     random_state=42,
     n_jobs=-1
 )
 ```
 
-### Parameter Explanation
+### Training Process
 
-| Parameter | Meaning |
-|---|---|
-| `n_estimators=100` | Uses 100 decision trees |
-| `random_state=42` | Helps produce reproducible results |
-| `n_jobs=-1` | Uses available CPU cores |
+```text
+Dataset
+   │
+   ▼
+Data Cleaning
+   │
+   ▼
+Feature Selection
+   │
+   ▼
+Train-Test Split
+   │
+   ▼
+Random Forest Training
+   │
+   ▼
+Model Evaluation
+   │
+   ▼
+Saved Machine Learning Model
+```
+
+The trained model is saved as:
+
+```text
+threat_detection_model.pkl
+```
 
 ---
 
-# 📈 Model Results
+# 📈 Model Performance
 
-The model was evaluated using a separate 20% test split.
+The model was evaluated using the test data.
 
-### Test Accuracy
+### Evaluation Result
 
-```text
-99.9956%
-```
+| Metric | Result |
+|---|---|
+| Test Accuracy | Approximately 99.9956% |
+| Algorithm | Random Forest |
+| Evaluation Dataset | CICIDS2017 test split |
 
 ### Confusion Matrix
 
 ```text
-[[19543     1]
- [    1 25604]]
+                 Predicted
+              BENIGN    DDoS
+
+Actual BENIGN   19543      1
+
+Actual DDoS         1  25604
 ```
 
-### Classification Report
+### Important Note
 
-| Class | Precision | Recall | F1-Score |
-|---|---:|---:|---:|
-| BENIGN | 1.00 | 1.00 | 1.00 |
-| DDoS | 1.00 | 1.00 | 1.00 |
+The reported accuracy was obtained on a specific test split of the CICIDS2017 dataset.
 
-> ⚠️ **Important:** This performance was measured on a particular CICIDS2017 test split. It should not be interpreted as guaranteed real-world cybersecurity detection accuracy.
+This result does **not** represent guaranteed real-world cybersecurity performance.
+
+Real-world performance may differ because of:
+
+- Different network environments
+- New attack patterns
+- Data distribution changes
+- Dataset limitations
+- Previously unseen traffic
 
 ---
 
@@ -200,166 +233,156 @@ The model was evaluated using a separate 20% test split.
 
 ## 🏠 Dashboard
 
-Provides an overview of the Sentinel AI system, including:
+The dashboard provides an overview of the Sentinel AI system.
+
+It displays:
 
 - System status
-- Model status
-- Threat detection information
-- Dataset information
-- Application navigation
+- Model availability
+- Network traffic statistics
+- Threat-related information
+- Navigation to different modules
 
-## 📚 Project Info
+## 📚 Project Information
 
-Explains the project objective, dataset, machine-learning approach, technologies, and cybersecurity scope.
+This section explains:
+
+- Project objectives
+- Dataset details
+- Machine learning algorithm
+- System workflow
+- Project limitations
 
 ## 🚨 Threat Detection
 
-Allows users to upload CSV network-traffic data and classify network flows as:
+Users can upload a CSV file containing network traffic data.
 
-- BENIGN
-- DDoS
+The application:
 
-### Workflow
-
-```text
-Upload CSV
-    ↓
-Validate Data
-    ↓
-Preprocess Features
-    ↓
-Machine Learning Model
-    ↓
-Threat Prediction
-```
+1. Reads the uploaded file.
+2. Checks whether the required features are available.
+3. Prepares the data for prediction.
+4. Uses the trained model to classify network traffic.
+5. Displays the prediction results.
 
 ## 🌐 Network Analysis
 
-Provides visual analysis of uploaded network traffic, including:
+This section provides visualizations of the network traffic data.
+
+It can display:
 
 - Traffic distribution
-- Threat distribution
-- Network statistics
-- Traffic tables
-- Visual analytics
+- BENIGN and DDoS counts
+- Network traffic statistics
+- Summary tables
+- Interactive charts
 
 ## 🔍 Flow Analyzer
 
-Allows individual network flows to be examined using their feature values.
+The Flow Analyzer allows users to inspect individual network flow records.
+
+Users can examine network features and view the model's prediction for a selected flow.
 
 ## 🛡️ Threat Response
 
-Demonstrates simulated defensive response actions after detecting potential threats.
+This section demonstrates a simulated response workflow.
 
-> **Note:** This project does not perform real firewall blocking or modify real network infrastructure.
+It can display:
+
+- Threat status
+- Recommended defensive actions
+- Alert information
+- Simulated response messages
+
+> The response functionality is simulated for educational purposes. The application does not automatically block traffic or modify real firewall rules.
 
 ## 📥 Security Report
 
-Generates downloadable security reports containing prediction results and relevant traffic information.
+Users can generate and download a CSV report containing network traffic predictions.
+
+The report can be used for:
+
+- Basic analysis
+- Documentation
+- Academic demonstrations
+- Security monitoring experiments
 
 ## 📊 Feature Importance
 
-Displays feature-importance information from the Random Forest model to help identify useful network-flow features.
+The application displays important features used by the Random Forest model.
+
+Feature importance helps users understand which input variables contributed most to the model's decisions.
 
 ## 🧠 AI Model
 
-Displays information about the trained model, including:
+This section provides information about:
 
-- Algorithm
-- Number of trees
+- The trained model
+- The machine learning algorithm
+- Model configuration
 - Dataset information
-- Model status
-- Prediction workflow
+- Model evaluation
 
 ---
 
-
-# 📸 Application Screenshots
-
-## 🏠 Dashboard
-
-![Sentinel AI Dashboard](https://raw.githubusercontent.com/JOEL7074/AI-Cyber-Threat-Detection/main/screenshots/dashboard.png)
-
----
-
-## 🚨 Threat Detection
-
-![Threat Detection](https://raw.githubusercontent.com/JOEL7074/AI-Cyber-Threat-Detection/main/screenshots/threat-detection.png)
-
----
-
-## 🌐 Network Analysis
-
-![Network Analysis](https://raw.githubusercontent.com/JOEL7074/AI-Cyber-Threat-Detection/main/screenshots/network-analysis.png)
-
----
-
-## 📊 Feature Importance
-
-![Feature Importance](https://raw.githubusercontent.com/JOEL7074/AI-Cyber-Threat-Detection/main/screenshots/feature-importance.png)
-
----
-
-## 🛡️ Threat Response
-
-![Threat Response](https://raw.githubusercontent.com/JOEL7074/AI-Cyber-Threat-Detection/main/screenshots/threat-response.png)
----
-
-# 🏗️ Project Architecture
+# 🏗️ System Architecture
 
 ```text
-                    ┌─────────────────────┐
-                    │   Network Dataset   │
-                    └──────────┬──────────┘
-                               │
-                               ↓
-                    ┌─────────────────────┐
-                    │ Data Preprocessing  │
-                    └──────────┬──────────┘
-                               │
-                               ↓
-                    ┌─────────────────────┐
-                    │ Feature Processing  │
-                    └──────────┬──────────┘
-                               │
-                               ↓
-                    ┌─────────────────────┐
-                    │   Random Forest     │
-                    │   ML Classifier     │
-                    └──────────┬──────────┘
-                               │
-                               ↓
-                    ┌─────────────────────┐
-                    │ Threat Prediction   │
-                    └──────────┬──────────┘
-                               │
-              ┌────────────────┼────────────────┐
-              ↓                ↓                ↓
-       Threat Detection   Network Analysis   Reports
-              │
-              ↓
-       Simulated Response
+                  ┌───────────────────────┐
+                  │   Network Flow Data   │
+                  │       CSV File        │
+                  └───────────┬───────────┘
+                              │
+                              ▼
+                  ┌───────────────────────┐
+                  │    Data Cleaning      │
+                  │  Missing Value Fixes  │
+                  └───────────┬───────────┘
+                              │
+                              ▼
+                  ┌───────────────────────┐
+                  │   Feature Processing  │
+                  └───────────┬───────────┘
+                              │
+                              ▼
+                  ┌───────────────────────┐
+                  │   Random Forest AI    │
+                  │        Model          │
+                  └───────────┬───────────┘
+                              │
+                              ▼
+                  ┌───────────────────────┐
+                  │   Threat Prediction   │
+                  │   BENIGN / DDoS       │
+                  └───────────┬───────────┘
+                              │
+                              ▼
+                  ┌───────────────────────┐
+                  │   Sentinel AI Web App │
+                  │      Streamlit        │
+                  └───────────────────────┘
 ```
 
 ---
 
 # 🛠️ Technologies Used
 
-- **Python**
-- **Pandas**
-- **NumPy**
-- **Scikit-learn**
-- **Random Forest**
-- **Streamlit**
-- **Plotly**
-- **Joblib**
-- **Visual Studio Code**
-- **Git**
-- **GitHub**
+| Technology | Purpose |
+|---|---|
+| Python | Main programming language |
+| Pandas | Data loading and preprocessing |
+| NumPy | Numerical data processing |
+| Scikit-learn | Machine learning model |
+| Random Forest | Network traffic classification |
+| Streamlit | Interactive web application |
+| Plotly | Data visualization |
+| Joblib | Model saving and loading |
+| Git | Version control |
+| GitHub | Project hosting |
 
 ---
 
-# 📁 Project Structure
+# 📂 Project Structure
 
 ```text
 AI-Cyber-Threat-Detection/
@@ -391,37 +414,41 @@ AI-Cyber-Threat-Detection/
 git clone https://github.com/JOEL7074/AI-Cyber-Threat-Detection.git
 ```
 
-Move into the project directory:
+## 2. Open the Project Folder
 
 ```bash
 cd AI-Cyber-Threat-Detection
 ```
 
-## 2. Install Required Libraries
+## 3. Install Required Libraries
 
 ```bash
 pip install pandas numpy scikit-learn streamlit plotly joblib
 ```
 
-## 3. Train the Model
+## 4. Train the Model
+
+If the model file does not already exist, run:
 
 ```bash
 python train_model.py
 ```
 
-The trained model will be saved as:
+This will train the model and generate:
 
 ```text
 threat_detection_model.pkl
 ```
 
-## 4. Run the Application
+## 5. Run the Application
+
+On Windows, use:
 
 ```bash
 python -m streamlit run app.py
 ```
 
-Open the application at:
+The application will open in your browser at:
 
 ```text
 http://localhost:8501
@@ -429,155 +456,148 @@ http://localhost:8501
 
 ---
 
-# 🔄 System Workflow
+# 📸 Application Screenshots
 
-```text
-CSV Network Traffic
-        ↓
-Data Cleaning
-        ↓
-Feature Processing
-        ↓
-Random Forest
-        ↓
-Threat Prediction
-        ↓
-BENIGN / DDoS
-        ↓
-Visualization
-        ↓
-Security Report
-        ↓
-Simulated Defensive Response
-```
+## 🏠 Dashboard
+
+![Sentinel AI Dashboard](screenshots/dashboard.png)
+
+---
+
+## 🚨 Threat Detection
+
+![Threat Detection](screenshots/threat-detection.png)
+
+---
+
+## 🌐 Network Analysis
+
+![Network Analysis](screenshots/network-analysis.png)
+
+---
+
+## 📊 Feature Importance
+
+![Feature Importance](screenshots/feature-importance.png)
+
+---
+
+## 🛡️ Threat Response
+
+![Threat Response](screenshots/threat-response.png)
 
 ---
 
 # 🔐 Cybersecurity Scope
 
-This project is designed for **defensive cybersecurity and academic demonstration**.
+This project focuses exclusively on **defensive cybersecurity**.
 
-It focuses on:
+The system is designed to demonstrate:
 
-- Network traffic analysis
-- Machine-learning-based threat detection
-- DDoS classification
-- Security visualization
-- Threat reporting
-- Simulated response
+- Network traffic classification
+- Intrusion detection concepts
+- Machine learning in cybersecurity
+- Threat monitoring
+- Security reporting
+- Simulated incident response
 
-It does not include:
+The project does not include:
 
-- Real-world attack execution
+- Real-world packet interception
+- Automatic firewall modification
+- Real network blocking
+- Offensive security operations
 - Exploit development
-- Malware
-- Credential theft
-- Unauthorized access
-- Real firewall modification
-- Offensive network operations
+- Malware deployment
 
 ---
 
-# ⚠️ Limitations
+# ⚠️ Project Limitations
 
-1. The model is trained on a specific portion of the CICIDS2017 dataset.
-2. The current implementation focuses primarily on BENIGN and DDoS traffic.
-3. The application analyzes uploaded CSV data instead of monitoring live network traffic.
-4. Threat-response actions are simulated.
-5. Test-split performance may not represent performance on unseen real-world traffic.
+1. The model is trained on a specific dataset.
+2. Only BENIGN and DDoS classes are used in this prototype.
+3. The application does not process live network traffic.
+4. The response module is simulated.
+5. The model may not perform equally well on unseen network environments.
+6. The reported accuracy is specific to the selected test split.
+7. The system is not intended for production cybersecurity deployment.
 
 ---
 
 # 🚀 Future Enhancements
 
-- Real-time network monitoring
-- Additional attack classifications
-- Larger and more diverse datasets
-- Advanced anomaly detection
-- Automated alerting
-- SIEM integration
-- Explainable AI
-- Model retraining pipelines
-- Cloud deployment
-- Production-grade monitoring
+Possible future improvements include:
+
+- Live network traffic monitoring
+- Support for additional attack categories
+- Real-time alert notifications
+- Improved data preprocessing
+- Model comparison and optimization
+- Explainable AI techniques
+- Continuous model evaluation
+- Integration with security monitoring platforms
+- Improved anomaly detection
+- More extensive validation using independent datasets
 
 ---
 
 # 🎓 Academic Significance
 
-This project combines:
+This project demonstrates the practical application of:
 
-```text
-Artificial Intelligence
-        +
-Machine Learning
-        +
-Data Science
-        +
-Cybersecurity
-        +
-Python
-        +
-Web Application Development
-```
+- Artificial Intelligence
+- Machine Learning
+- Data Science
+- Cybersecurity
+- Network Traffic Analysis
+- Classification Algorithms
+- Data Preprocessing
+- Data Visualization
+- Python Application Development
 
-It provides practical exposure to:
-
-- Data preprocessing
-- Classification
-- Model training
-- Model evaluation
-- Feature importance
-- Data visualization
-- Machine-learning deployment
-- Cybersecurity analytics
+It can be used as an educational project for understanding how machine learning can support cybersecurity monitoring.
 
 ---
 
-# 👶 Simple Explanation
+# 👶 Simple Explanation of the Project
 
-Imagine a security guard watching thousands of cars entering a city.
+Imagine a security guard watching thousands of vehicles entering a city.
 
-The guard cannot manually inspect every car, so we train an AI system using examples of normal and dangerous traffic.
+Some vehicles are normal, while others may be dangerous.
 
-```text
-Normal traffic     → BENIGN
-Potential DDoS     → DDoS
-```
+Instead of making the security guard check every vehicle manually, we train an AI system using examples of normal and suspicious traffic.
 
-When new traffic arrives, the AI analyzes its characteristics and predicts its category.
+The AI learns patterns from the examples.
 
-The result is displayed on the Sentinel AI cybersecurity dashboard.
+When new network traffic is provided, the AI predicts whether the traffic is normal or potentially related to a DDoS attack.
+
+This is the basic idea behind Sentinel AI.
 
 ---
 
 # 💬 One-Line Project Explanation
 
-> Sentinel AI is a machine-learning-based cybersecurity system that analyzes network traffic and detects potential DDoS threats using a Random Forest classifier.
+> Sentinel AI is a machine learning-based cybersecurity application that analyzes network traffic and classifies it as BENIGN or DDoS using a Random Forest model.
 
 ---
 
-# 🧑‍💻 Key Project Keywords
+# 🔑 Important Project Keywords
 
-```text
-Python
-Machine Learning
-Artificial Intelligence
-Cybersecurity
-Network Security
-Intrusion Detection
-DDoS Detection
-Random Forest
-Scikit-learn
-Pandas
-NumPy
-Streamlit
-Plotly
-Data Analysis
-Feature Importance
-Threat Detection
-Security Analytics
-```
+- Artificial Intelligence
+- Machine Learning
+- Cybersecurity
+- Network Intrusion Detection
+- DDoS Detection
+- Random Forest Classifier
+- CICIDS2017 Dataset
+- Python
+- Streamlit
+- Data Preprocessing
+- Network Traffic Analysis
+- Feature Importance
+- Security Monitoring
+- Threat Detection
+- Defensive Cybersecurity
 
 ---
 
@@ -585,12 +605,14 @@ Security Analytics
 
 **JOEL**
 
-B.Tech — Artificial Intelligence & Data Science
+GitHub: [JOEL7074](https://github.com/JOEL7074)
+
+Project Repository: [AI Cyber Threat Detection](https://github.com/JOEL7074/AI-Cyber-Threat-Detection)
 
 ---
 
-# ⚠️ Disclaimer
+# ⚖️ Disclaimer
 
-This project is developed for educational, research, and defensive cybersecurity demonstration purposes.
+This project is intended for educational and academic purposes only.
 
-The reported machine-learning performance is based on the selected CICIDS2017 dataset and test split. It should not be interpreted as guaranteed real-world cybersecurity performance.
+It is a machine learning prototype and should not be used as a replacement for professional cybersecurity monitoring or incident-response systems.
