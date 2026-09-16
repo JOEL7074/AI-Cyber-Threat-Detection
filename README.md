@@ -273,6 +273,7 @@ Displays information about the trained model, including:
 
 ---
 
+
 # 📸 Application Screenshots
 
 ## 🏠 Dashboard
@@ -302,7 +303,6 @@ Displays information about the trained model, including:
 ## 🛡️ Threat Response
 
 ![Threat Response](https://raw.githubusercontent.com/JOEL7074/AI-Cyber-Threat-Detection/main/screenshots/threat-response.png)
-
 ---
 
 # 🏗️ Project Architecture
